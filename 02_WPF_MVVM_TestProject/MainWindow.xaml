@@ -1,0 +1,98 @@
+﻿<!-- This is the XAML code for the View section of your WPF MVVM architecture -->
+<Window x:Class="_02_WPF_MVVM_TestProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_WPF_MVVM_TestProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--Name Of the Pogramm-->
+            <RowDefinition Height="20"/>
+
+            <!--Content of the programm-->
+            <RowDefinition Height="50*"/>
+
+            <!--Button Of this Programm-->
+            <RowDefinition Height="20*"/>
+
+            <!--Footer of this Programmt-->
+            <RowDefinition Height="10"/>
+
+        </Grid.RowDefinitions>
+
+        <!--Accessing the Heading Section-->
+        <Grid Grid.Row="0">
+            <!-- Rectangle to act as a background color -->
+            <Rectangle  Fill="CadetBlue"/>
+
+            <!-- TextBlock to display the header -->
+            <TextBlock Name="txt_header" Text="Temperature Converting Program: Bazinga" FontWeight="Bold"/>
+
+        </Grid>
+
+        <!--Accessing the Content of the programm-->
+        <Grid Grid.Row="1">
+            <!--Background Colour-->
+            <Rectangle Fill="LightSteelBlue"/>
+            <!--Display message to user what to do-->
+            <TextBlock Text="Enter Any value for Celsius  !!!" FontSize="14" HorizontalAlignment="Left" Margin="257,22,0,199"/>
+            <!--getting user inputs-->
+            <Label Content="Celsius" FontFamily="light" FontSize="16" HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" Height="28" Width="97" Margin="132,92,0,0"/>
+            <!-- Update the TextBox binding to TwoWay mode to ensure the ViewModel updates with the entered value -->
+            <TextBox Name="txt_celsius" FontFamily="light" FontSize="16" HorizontalAlignment="Right" 
+         VerticalAlignment="Top" Width="250" Margin="0,95,311,0"
+         Text="{Binding Celsius, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            <Label Content="Farenheit" FontFamily="light" FontSize="16" HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" Height="28" Width="97" Margin="132,137,0,0" />
+            <TextBox Name="txt_farenheit" FontFamily="light" FontSize="16" HorizontalAlignment="Right" 
+                     VerticalAlignment="Top" Width="250" 
+                     Text="{Binding fahrenheit,UpdateSourceTrigger=PropertyChanged}" Margin="0,144,311,0"/>
+
+            <Label Content="Kelvin" FontFamily="light" FontSize="16" HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" Height="28" Width="97" Margin="132,195,0,0" />
+            <TextBox Name="txt_kelvin" FontFamily="light" FontSize="16" HorizontalAlignment="Right" 
+                     VerticalAlignment="Top" Width="250"
+                     Text="{Binding kelvin,UpdateSourceTrigger=PropertyChanged}" Margin="0,198,311,0"/>
+
+            
+            <!-- Update the TextBlocks to bind to the ViewModel properties -->
+            <TextBlock Text="{Binding Fahrenheit, StringFormat={}{0:F2}}" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Margin="0,144,311,0"/>
+            <TextBlock Text="{Binding Kelvin, StringFormat={}{0:F2}}" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top" Width="250" Margin="0,198,311,0"/>
+
+        </Grid>
+
+        <!--Button section of the programm-->
+        <Grid Grid.Row="2">
+            <!--Adding a background colour-->
+            <Rectangle Fill="SkyBlue"/>
+
+            <!--Create Button for Convert-->
+            <Button Name="btn_Convert" Margin="188,43,504,35" Content="Convert" 
+                    FontSize="18" FontWeight="Bold" Command="{Binding ConvertCommand}"/>
+            <!--create Button for Clear and re do the conversion-->
+            <Button Name="btn_Clear"  Content="Clear" 
+                    FontSize="18" FontWeight="Bold" Margin="482,43,210,35"
+                    Command="{Binding ClearCommand}"/>
+
+
+        </Grid>
+
+        <!--Footer of the programm-->
+        <Grid Grid.Row="3">
+            <!-- Rectangle to act as a background color -->
+            <Rectangle  Fill="CadetBlue"/>
+            <!-- TextBlock to display the header -->
+            <TextBlock  Name="txt_footer" Text="Developed By MojithaR" FontWeight="Light" FontSize="6" HorizontalAlignment="Center"/>
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>
